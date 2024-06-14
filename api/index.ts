@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use("/demo", (req, _, next) => {
   req.headers["x-port"] = "4001";
-  next();
+  return next();
 }, proxyMiddleware);
 
 app.all("*", (_, res) => res.status(404).json({ message: "Route not found" }));
