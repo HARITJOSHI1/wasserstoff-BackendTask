@@ -10,7 +10,7 @@ const logger = LoggerModule();
 app.use(express.json());
 
 app.use("/", (_, res) => {
-  console.log("in here", process.env.VERCEL_URL);
+  console.log("in here", process.env.NEXT_PUBLIC_URL);
   res.status(200).json({ message: `Working ${LOAD_BALANCER_PORT}` });
 });
 
