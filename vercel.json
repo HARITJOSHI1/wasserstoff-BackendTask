@@ -1,23 +1,5 @@
 {
   "version": 2,
-  "functions": {
-    "api/index.ts": {
-      "memory": 3009,
-      "maxDuration": 15
-    },
-    "api/4001.ts": {
-      "memory": 3009,
-      "maxDuration": 15
-    },
-    "api/4002.ts": {
-      "memory": 3009,
-      "maxDuration": 15
-    },
-    "api/4003.ts": {
-      "memory": 3009,
-      "maxDuration": 15
-    }
-  },
   "rewrites": [
     { "source": "/4001/(.*)", "destination": "/api/4001.ts" },
     { "source": "/4002/(.*)", "destination": "/api/4002.ts" },
