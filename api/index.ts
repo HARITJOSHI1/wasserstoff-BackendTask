@@ -4,6 +4,10 @@ import express from "express";
 import winston from "winston";
 
 export const LOAD_BALANCER_PORT = process.env.PORT || 4000;
+const app = express();
+
+app.use(express.json());
+
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.json(),
@@ -12,9 +16,6 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: "load-balancer.log" }),
   ],
 });
-const app = express();
-
-app.use(express.json());
 
 app.use("/", (_, res) => {
   console.log("in here", process.env.VERCEL_URL);
@@ -23,6 +24,6 @@ app.use("/", (_, res) => {
 
 app.all("*", (_, res) => res.status(404).json({ message: "Route not found" }));
 
-app.listen(LOAD_BALANCER_PORT, () => {
+app.listen(4000, () => {
   logger.info(`Server running on LOAD_BALANCER_PORT ${LOAD_BALANCER_PORT}`);
 });
