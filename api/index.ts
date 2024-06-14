@@ -17,7 +17,7 @@ app.use("/demo", (req, _, next) => {
   return next();
 }, proxyMiddleware);
 
-app.all("*", (_, res) => res.status(404).json({ message: "Route not found" }));
+// app.all("*", (_, res) => res.status(404).json({ message: "Route not found" }));
 
 app.listen(4000, () => {
   logger.info(`Server running on LOAD_BALANCER_PORT ${LOAD_BALANCER_PORT}`);

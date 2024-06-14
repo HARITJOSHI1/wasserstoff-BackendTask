@@ -13,7 +13,7 @@ app.get("/demo", (req, res) => {
   res.status(200).json({ message: "Working 4003" });
 });
 
-app.all("*", (_, res) => res.status(404).json({ message: "Route not found" }));
+// app.all("*", (_, res) => res.status(404).json({ message: "Route not found" }));
 
 const PORT = process.env.SERVER_PORT_3;
 app.listen(PORT, () => {
