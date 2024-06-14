@@ -8,21 +8,12 @@
     "dev:4002": "bun --hot src/4002.ts",
     "dev:4003": "bun --hot src/4003.ts",
     "dev": "concurrently \"bun run dev:load-balancer\" \"bun run dev:4001\" \"bun run dev:4002\" \"bun run dev:4003\"",
-    "build": "rimraf dist && tsc",
-    "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
-    "pre-commit": "bun run ts.check && bun run build && bun run add-build",
-    "husky": {
-      "hooks": {
-        "pre-commit": "npm run pre-commit"
-      }
-    }
+    "build": "rimraf ./dist && bun build src/index.ts --outdir ./dist"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/express": "^4.17.21",
     "concurrently": "^8.2.2",
-    "husky": "^9.0.11",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
