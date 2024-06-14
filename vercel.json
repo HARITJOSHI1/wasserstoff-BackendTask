@@ -3,19 +3,19 @@
   "functions": {
     "api/index.ts": {
       "memory": 3009,
-      "maxDuration": 30
+      "maxDuration": 15
     },
     "api/4001.ts": {
       "memory": 3009,
-      "maxDuration": 30
+      "maxDuration": 15
     },
     "api/4002.ts": {
       "memory": 3009,
-      "maxDuration": 30
+      "maxDuration": 15
     },
     "api/4003.ts": {
       "memory": 3009,
-      "maxDuration": 30
+      "maxDuration": 15
     }
   },
   "rewrites": [
