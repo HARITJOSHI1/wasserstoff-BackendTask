@@ -10,8 +10,8 @@ const logger = LoggerModule();
 app.use(express.json());
 
 app.use("/", (_, res) => {
-  console.log("in here", process.env.NEXT_PUBLIC_URL);
-  res.status(200).json({ message: `Working ${LOAD_BALANCER_PORT}` });
+  logger.info(`hit the root route ${process.env}`);
+  return res.status(200).json({ message: `Working ${LOAD_BALANCER_PORT}` });
 });
 
 app.all("*", (_, res) => res.status(404).json({ message: "Route not found" }));
