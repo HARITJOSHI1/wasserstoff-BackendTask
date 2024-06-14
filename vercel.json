@@ -1,1 +1,23 @@
-{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/api" }] }
+{
+  "version": 2,
+  "functions": {
+    "api/index.ts": {
+      "runtime": "vercel-node"
+    },
+    "api/4001.ts": {
+      "runtime": "vercel-node"
+    },
+    "api/4002.ts": {
+      "runtime": "vercel-node"
+    },
+    "api/4003.ts": {
+      "runtime": "vercel-node"
+    }
+  },
+  "rewrites": [
+    { "source": "/4001/(.*)", "destination": "/api/4001.ts" },
+    { "source": "/4002/(.*)", "destination": "/api/4002.ts" },
+    { "source": "/4003/(.*)", "destination": "/api/4003.ts" },
+    { "source": "/(.*)", "destination": "/api/index.ts" }
+  ]
+}
