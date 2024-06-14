@@ -7,7 +7,8 @@
     "dev:4001": "bun --hot api/4001.ts",
     "dev:4002": "bun --hot api/4002.ts",
     "dev:4003": "bun --hot api/4003.ts",
-    "dev": "concurrently \"bun run dev:load-balancer\" \"bun run dev:4001\" \"bun run dev:4002\" \"bun run dev:4003\""
+    "dev": "concurrently \"bun run dev:load-balancer\" \"bun run dev:4001\" \"bun run dev:4002\" \"bun run dev:4003\"",
+    "build": "bun build api/index.ts --outdir ./build"
   },
   "devDependencies": {
     "@types/bun": "latest",

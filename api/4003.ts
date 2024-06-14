@@ -1,5 +1,5 @@
 import express, { type Response } from "express";
-import LoggerModule from "./shared/logger";
+import LoggerModule from "../shared/logger";
 
 const logger = LoggerModule();
 

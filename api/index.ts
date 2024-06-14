@@ -1,5 +1,5 @@
 import express from "express";
-import {LoggerModule} from "./shared/logger";
+import {LoggerModule} from "../shared/logger";
 // import proxyMiddleware from "./config/proxy";
 // import winston from "winston";
 
