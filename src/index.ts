@@ -1,11 +1,11 @@
 import express from "express";
-import {LoggerModule} from "../shared/logger";
+import LoggerModule from "../shared/logger";
 // import proxyMiddleware from "./config/proxy";
 // import winston from "winston";
 
 const LOAD_BALANCER_PORT = process.env.PORT || 4000;
 const app = express();
-const logger = LoggerModule()
+const logger = LoggerModule();
 
 app.use(express.json());
 

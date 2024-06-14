@@ -1,6 +1,6 @@
 import winston from "winston";
 
-export const LoggerModule = () => {
+const LoggerModule = () => {
   return winston.createLogger({
     level: "info",
     format: winston.format.json(),
@@ -10,3 +10,5 @@ export const LoggerModule = () => {
     ],
   });
 };
+
+export default LoggerModule;

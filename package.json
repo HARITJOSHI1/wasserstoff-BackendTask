@@ -3,12 +3,15 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev:load-balancer": "bun --hot api/index.ts",
-    "dev:4001": "bun --hot api/4001.ts",
-    "dev:4002": "bun --hot api/4002.ts",
-    "dev:4003": "bun --hot api/4003.ts",
+    "dev:load-balancer": "bun --hot src/index.ts",
+    "dev:4001": "bun --hot src/4001.ts",
+    "dev:4002": "bun --hot src/4002.ts",
+    "dev:4003": "bun --hot src/4003.ts",
     "dev": "concurrently \"bun run dev:load-balancer\" \"bun run dev:4001\" \"bun run dev:4002\" \"bun run dev:4003\"",
-    "build": "bun build api/index.ts --outdir ./build"
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
+    "pre-commit": "bun run ts.check && bun run build && bun run add-build"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -26,6 +29,8 @@
     "axios": "^1.7.2",
     "express": "^4.19.2",
     "express-http-proxy": "^2.0.0",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.7",
     "winston": "^3.13.0"
   }
 }
