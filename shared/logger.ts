@@ -1,6 +1,6 @@
 import winston from "winston";
 
-export const LoggerModule = () => {
+export default function LoggerModule() {
   return winston.createLogger({
     level: "info",
     format: winston.format.json(),
@@ -9,4 +9,4 @@ export const LoggerModule = () => {
       new winston.transports.File({ filename: "load-balancer.log" }),
     ],
   });
-};
+}
