@@ -10,7 +10,7 @@ const logger = LoggerModule();
 app.use(express.json());
 
 app.use("/demo", (_, res) =>
-  res.status(200).json({ message: `Working... ${LOAD_BALANCER_PORT}` })
+  res.status(200).json({ message: `Working ${LOAD_BALANCER_PORT}` })
 );
 
 app.all("*", (_, res) => res.status(404).json({ message: "Route not found" }));
