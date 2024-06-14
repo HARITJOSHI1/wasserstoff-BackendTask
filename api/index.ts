@@ -10,7 +10,9 @@ const logger = LoggerModule();
 app.use(express.json());
 
 app.use("/", (_, res) => {
-  logger.info(`hit the root route ${process.env}`);
+  logger.info("hit the root route");
+  console.log(process.env);
+
   return res.status(200).json({ message: `Working ${LOAD_BALANCER_PORT}` });
 });
 
