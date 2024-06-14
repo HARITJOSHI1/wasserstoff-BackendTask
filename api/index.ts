@@ -1,5 +1,5 @@
 import express from "express";
-import LoggerModule from "../shared/logger";
+import LoggerModule from "./shared/logger";
 import proxyMiddleware from "./config/proxy";
 
 export const LOAD_BALANCER_PORT = process.env.PORT || 4000;
