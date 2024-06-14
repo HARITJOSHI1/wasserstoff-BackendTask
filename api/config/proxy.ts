@@ -16,6 +16,8 @@ const proxyMiddleware = (req: Request, res: Response, next: NextFunction) => {
   if (!port && portUrl === +process.env.PORT!) return next();
 
   if (validPorts.includes(port)) {
+    if (process.env.NODE_ENV === "production")
+      return proxy(`https://${process.env.VERCEL_URL}`)(req, res, next);
     return proxy(`http://localhost:${port}`)(req, res, next);
   } else {
     return res.status(404).json({ message: "Port not found" });

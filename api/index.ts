@@ -9,12 +9,9 @@ const logger = LoggerModule();
 
 app.use(express.json());
 
-app.use("/", (_, res) => {
-  logger.info("hit the root route");
-  console.log(process.env);
-
-  return res.status(200).json({ message: `Working ${LOAD_BALANCER_PORT}` });
-});
+app.use("/demo", (_, res) =>
+  res.status(200).json({ message: `Working ${LOAD_BALANCER_PORT}` })
+);
 
 app.all("*", (_, res) => res.status(404).json({ message: "Route not found" }));
 
