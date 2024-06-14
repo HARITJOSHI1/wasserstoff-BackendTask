@@ -3,10 +3,10 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev:load-balancer": "bun --hot servers/index.ts",
-    "dev:4001": "bun --hot servers/4001.ts",
-    "dev:4002": "bun --hot servers/4002.ts",
-    "dev:4003": "bun --hot servers/4003.ts",
+    "dev:load-balancer": "bun --hot api/index.ts",
+    "dev:4001": "bun --hot api/4001.ts",
+    "dev:4002": "bun --hot api/4002.ts",
+    "dev:4003": "bun --hot api/4003.ts",
     "dev": "concurrently \"bun run dev:load-balancer\" \"bun run dev:4001\" \"bun run dev:4002\" \"bun run dev:4003\""
   },
   "devDependencies": {
