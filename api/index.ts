@@ -8,14 +8,14 @@ const logger = LoggerModule();
 
 app.use(express.json());
 
-// app.use("/demo", (_, res) =>
-//   res.status(200).json({ message: `Working ${LOAD_BALANCER_PORT}` })
-// );
+app.use("/demo", (_, res) =>
+  res.status(200).json({ message: `Working ${LOAD_BALANCER_PORT}` })
+);
 
-app.use("/demo", (req, _, next) => {
-  req.headers["x-port"] = "4001";
-  return next();
-}, proxyMiddleware);
+// app.use("/demo", (req, _, next) => {
+//   req.headers["x-port"] = "4001";
+//   return next();
+// }, proxyMiddleware);
 
 // app.all("*", (_, res) => res.status(404).json({ message: "Route not found" }));
 
