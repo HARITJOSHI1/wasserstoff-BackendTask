@@ -1,9 +1,17 @@
 import express from "express";
-import {LoggerModule} from "../shared/logger";
-import proxyMiddleware from "./config/proxy";
+// import { LoggerModule } from "../shared/logger";
+// import proxyMiddleware from "./config/proxy";
+import winston from "winston";
 
 export const LOAD_BALANCER_PORT = process.env.PORT || 4000;
-const logger = LoggerModule();
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.json(),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: "load-balancer.log" }),
+  ],
+});
 const app = express();
 
 app.use(express.json());
