@@ -2,16 +2,16 @@
   "version": 2,
   "functions": {
     "api/index.ts": {
-      "runtime": "vercel-node"
+      "runtime": "vercel-node@1.1.0"
     },
     "api/4001.ts": {
-      "runtime": "vercel-node"
+      "runtime": "vercel-node@1.1.0"
     },
     "api/4002.ts": {
-      "runtime": "vercel-node"
+      "runtime": "vercel-node@1.1.0"
     },
     "api/4003.ts": {
-      "runtime": "vercel-node"
+      "runtime": "vercel-node@1.1.0"
     }
   },
   "rewrites": [
