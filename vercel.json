@@ -1,9 +1,6 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/4001/:path*", "destination": "/api/4001.ts" },
-    { "source": "/4002/:path*", "destination": "/api/4002.ts" },
-    { "source": "/4003/:path*", "destination": "/api/4003.ts" },
     { "source": "/(.*)", "destination": "/api/index.ts" }
   ]
 }
