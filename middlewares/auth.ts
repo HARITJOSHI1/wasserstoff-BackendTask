@@ -30,6 +30,13 @@ const authMiddleware = async (
     token = req.headers.authorization.split("Bearer ").pop()!;
   } else token = req.cookies.token;
 
+  if (!token) {
+    return res.status(403).json({
+      status: "Forbidden",
+      message: "Authorization token is missing",
+    });
+  }
+
   const { payload } = await decodeToken(token);
 
   if (isJwtPayload(payload)) {
