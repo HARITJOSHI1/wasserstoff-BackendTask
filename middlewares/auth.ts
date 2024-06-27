@@ -33,8 +33,7 @@ const authMiddleware = async (
   const { payload } = await decodeToken(token);
 
   if (isJwtPayload(payload)) {
-    console.log("JWT PAYLOAD", payload);
-
+    req.userId = payload.id as string;
     req.token = token;
     return next();
   }

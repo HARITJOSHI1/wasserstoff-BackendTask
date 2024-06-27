@@ -45,12 +45,22 @@ export const userCreation = async (
     const token =
       req.headers.authorization?.split("Bearer ").pop() || req.cookies.token;
 
+    const env = process.env.NODE_ENV;
+
     // if user has a token don't sign in again
-    if (token)
+    if ((env === "preview" || env === "production") && token)
       return res.status(400).json({
         status: "bad request",
         message: "User already exisits",
       });
+    else {
+      const user = await User.findOne({ email: req.body.email });
+      if (user)
+        return res.status(400).json({
+          status: "bad request",
+          message: "User already exisits",
+        });
+    }
 
     // create new user
     const user = new User({ ...req.body });
@@ -66,6 +76,35 @@ export const userCreation = async (
       data: { id: user.id, token: newToken },
     });
   } catch (err) {
+    return res
+      .status(500)
+      .json({ status: "failed", error: (err as any).message });
+  }
+};
+
+export const getUser = async (
+  req: RequestUserDTOType,
+  res: ResponseUserDTOType
+) => {
+  try {
+    const user = await User.findById(req.userId, { __id: 0, __v: 0 }).lean();
+
+    if (!user)
+      return res.status(404).json({
+        status: "failed",
+        message: "No user found",
+      });
+
+    res.setHeader("Cahce-Control", "max-age=120, stale-while-revalidate=59");
+
+    return res.status(201).json({
+      status: "success",
+      message: "User information fetched",
+      data: { user },
+    });
+  } 
+  
+  catch (err) {
     return res
       .status(500)
       .json({ status: "failed", error: (err as any).message });

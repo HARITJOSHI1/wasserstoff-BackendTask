@@ -26,11 +26,14 @@ export const ResponseUserDTO = z.object({
   message: z.string().optional(),
   data: z
     .object({
-      id: z.string().refine((val) => /^[0-9a-fA-F]{24}$/.test(val), {
-        message: "Invalid MongoDB ObjectId",
-      }),
-      user: UserDTO.optional(),
-      token: z.string().optional()
+      id: z
+        .string()
+        .refine((val) => /^[0-9a-fA-F]{24}$/.test(val), {
+          message: "Invalid MongoDB ObjectId",
+        })
+        .optional(),
+      user: UserDTO.extend({ __id: z.string().optional() }).optional(),
+      token: z.string().optional(),
     })
     .optional(),
 
