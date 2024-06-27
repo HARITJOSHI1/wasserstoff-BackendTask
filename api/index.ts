@@ -1,25 +1,33 @@
-import express, { type Response } from "express";
-import winston from "winston";
+import express from "express";
+import dotenv from "dotenv";
+import connectDB from "../db.js";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import UserRouter from "../routes/userRoutes.js";
 
+const APP_PORT = process.env.PORT || 4000;
+
+// bootsrtaping express app
 const app = express();
-app.use(express.json());
 
-// Winston logger setup
-const logger = winston.createLogger({
-  level: "info",
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({ filename: "load-balancer.log" }),
-  ],
-});
+// config path for .env vars and establishing db connection
+dotenv.config();
+connectDB();
 
-app.get("/", (req, res) => {
-  console.log("in here");
-  res.status(200).json({ message: "Working" });
-});
+// middlewares to handle bodyparsing to json along with multipart data and cookies
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  logger.info(`Server is running on port ${PORT}`);
+// mounted user router
+app.use("/api/worko", UserRouter);
+
+// handle not found when none of the path mathces
+app.all("*", (_, res) =>
+  res.status(404).json({ status: "Failure", error: "Route not found" })
+);
+
+// listen to port
+app.listen(4000, () => {
+  console.info(`Server running on PORT ${APP_PORT}`);
 });
