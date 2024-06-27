@@ -7,7 +7,8 @@ const envSchema = z.object({
   MONGO_URI: z.string(),
   JWT_ISSURER_DEV: z.string(),
   JWT_ISSURER_PREVIEW: z.string(),
-  JWT_TOKEN_EXP: z.number()
+  JWT_TOKEN_EXP: z.number(),
+  JWT_ISSURER_PRODUCTION: z.string()
 });
 
 // augmenting ProcessEnv interface to also bound to types present in 'envSchema'

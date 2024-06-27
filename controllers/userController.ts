@@ -13,7 +13,7 @@ export const getIssuer = (env: typeof process.env.NODE_ENV) => {
     case "testing":
       return process.env.JWT_ISSURER_DEV;
     case "production":
-      return process.env.JWT_ISSURER_PREVIEW;
+      return process.env.JWT_ISSURER_PRODUCTION;
     case "preview":
       return process.env.JWT_ISSURER_PREVIEW;
   }
@@ -166,7 +166,7 @@ export const updateUser = async (
         message: "No user data provided nothing updated!",
         data: { users: [] },
       });
-      
+
     const user = await User.findByIdAndUpdate(req.userId, req.body, {
       projection: {
         _id: 0,
