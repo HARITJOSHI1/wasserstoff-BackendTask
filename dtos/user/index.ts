@@ -32,7 +32,7 @@ export const ResponseUserDTO = z.object({
           message: "Invalid MongoDB ObjectId",
         })
         .optional(),
-      user: UserDTO.extend({ __id: z.string().optional() }).optional(),
+      users: UserDTO.extend({ __id: z.string().optional() }).array().optional(),
       token: z.string().optional(),
     })
     .optional(),

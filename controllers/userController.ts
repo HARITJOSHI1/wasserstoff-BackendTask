@@ -87,7 +87,7 @@ export const getUser = async (
   res: ResponseUserDTOType
 ) => {
   try {
-    const user = await User.findById(req.userId, { __id: 0, __v: 0 }).lean();
+    const user = await User.findById(req.userId, { _id: 0, __v: 0 }).lean();
 
     if (!user)
       return res.status(404).json({
@@ -97,14 +97,83 @@ export const getUser = async (
 
     res.setHeader("Cahce-Control", "max-age=120, stale-while-revalidate=59");
 
-    return res.status(201).json({
+    return res.status(200).json({
       status: "success",
       message: "User information fetched",
-      data: { user },
+      data: { users: [user] },
     });
-  } 
-  
-  catch (err) {
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ status: "failed", error: (err as any).message });
+  }
+};
+
+export const getAllUser = async (
+  req: RequestUserDTOType,
+  res: ResponseUserDTOType
+) => {
+  try {
+    const users = await User.find({}).lean();
+
+    if (!users.length)
+      return res.status(404).json({
+        status: "failed",
+        message: "No users found",
+      });
+
+    res.setHeader("Cahce-Control", "max-age=120, stale-while-revalidate=59");
+
+    return res.status(200).json({
+      status: "success",
+      message: "User information fetched",
+      data: { users: users },
+    });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ status: "failed", error: (err as any).message });
+  }
+};
+
+export const deleteUser = async (
+  req: RequestUserDTOType,
+  res: ResponseUserDTOType
+) => {
+  try {
+    const user = await User.findByIdAndDelete(req.userId);
+
+    return res.status(200).json({
+      status: "success",
+      message: "User information deleted",
+      data: { id: user?.id },
+    });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ status: "failed", error: (err as any).message });
+  }
+};
+
+export const updateUser = async (
+  req: RequestUserDTOType,
+  res: ResponseUserDTOType
+) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.userId, req.body, {
+      projection: {
+        _id: 0,
+        __v: 0,
+      },
+      new: true,
+    }).lean();
+
+    return res.status(201).json({
+      status: "success",
+      message: "User updated successfully",
+      data: { users: [user!] },
+    });
+  } catch (err) {
     return res
       .status(500)
       .json({ status: "failed", error: (err as any).message });
