@@ -160,6 +160,13 @@ export const updateUser = async (
   res: ResponseUserDTOType
 ) => {
   try {
+    if (!Object.keys(req.body).length)
+      return res.status(200).json({
+        status: "success",
+        message: "No user data provided nothing updated!",
+        data: { users: [] },
+      });
+      
     const user = await User.findByIdAndUpdate(req.userId, req.body, {
       projection: {
         _id: 0,
@@ -168,7 +175,7 @@ export const updateUser = async (
       new: true,
     }).lean();
 
-    return res.status(201).json({
+    return res.status(200).json({
       status: "success",
       message: "User updated successfully",
       data: { users: [user!] },

@@ -18,7 +18,7 @@ router.use(authMiddleware);
 router
   .route("/user/:userId")
   .get(getUser)
-  .patch(validate(UserDTO), updateUser)
+  .patch(updateUser)
   .delete(deleteUser);
 router.get("/users", getAllUser);
 
