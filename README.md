@@ -36,9 +36,9 @@ This project sets up a Node.js application using the Model-View-Controller (MVC)
     bun install
     ```
 
-3. **Run the application:**
+3. **Run the application in development:**
     ```sh
-    bun run app.ts
+    bun run dev
     ```
 
 ## 🗂️ Folder structure
