@@ -99,6 +99,7 @@ This project sets up a Node.js application using the Model-View-Controller (MVC)
 - **Id** - Required for POST/PUT/DELETE.
 
 ## 🗂️ Sample .env Variables
+### copy paste these in .env file in the root of the project
 ```env
 NODE_ENV = "dev"
 JWT_SECRET="xnxjashiq1008$%^&7sn"
