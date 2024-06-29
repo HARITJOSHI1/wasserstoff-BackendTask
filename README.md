@@ -65,7 +65,6 @@ This project sets up a Node.js application using the Model-View-Controller (MVC)
 ├── bun.lockb
 ├── db.ts
 ├── package.json
-├── project_structure.txt
 ├── README.md
 ├── tsconfig.json
 └── vercel.json
