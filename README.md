@@ -79,7 +79,6 @@ This project sets up a Node.js application using the Model-View-Controller (MVC)
 - **GET** `/worko/user` - List users
 - **GET** `/worko/user/:userId` - Get user details
 - **POST** `/worko/user` - Create user
-- **PUT** `/worko/user/:userId` - Update user
 - **PATCH** `/worko/user/:userId` - Update user
 - **DELETE** `/worko/user/:userId` - Soft delete user
 
