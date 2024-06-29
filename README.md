@@ -1,7 +1,7 @@
 # 📚 NodeJs Project with MVC Architecture
 
 ## 🌟 Overview
-This project sets up a Node.js application using the Model-View-Controller (MVC) architecture. It includes a complete structure with Controllers, Services, DAOs, Models, and DTOs for handling CRUD operations on a User resource. It also incorporates validation, basic authentication, and unit testing.
+This project sets up a Node.js application using the Model-View-Controller (MVC) architecture. It includes a complete structure with Controllers, Services, DAOs, Models, and DTOs for handling CRUD operations on a User resource.
 
 ### Tech Stack
 - **Node.js**
