@@ -71,7 +71,6 @@ This project sets up a Node.js application using the Model-View-Controller (MVC)
 ```
 ## 🚀 API Endpoints
 
-- Here is the link to the api at production:  https://workoai.vercel.app
 - If you want to test the endpoints mentioned below chech out the [postman collection](https://www.postman.com/scholax/workspace/workioai/collection/12313396-120de791-377e-4bdd-b1e1-f3aa4982d258?action=share&creator=12313396&active-environment=12313396-3346455c-e757-4a9c-b7f9-8bfa5e4b10d8)
 
 ### User Resource: `/worko/user`
